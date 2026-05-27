@@ -2,10 +2,13 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Mathew Luv Christe | AI Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -16,25 +19,38 @@
     }
 
     body {
-      background: #050505;
+      font-family: 'Poppins', sans-serif;
+      background: #040816;
       color: white;
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at top right, rgba(0, 183, 255, 0.15), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(111, 0, 255, 0.15), transparent 30%);
+      z-index: -1;
     }
 
     nav {
       position: fixed;
       width: 100%;
       top: 0;
-      background: rgba(0, 0, 0, 0.8);
+      padding: 20px 8%;
+      background: rgba(0,0,0,0.3);
       backdrop-filter: blur(10px);
-      padding: 20px;
+      display: flex;
+      justify-content: center;
       z-index: 1000;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
     nav ul {
       display: flex;
-      justify-content: center;
       gap: 40px;
       list-style: none;
     }
@@ -42,151 +58,203 @@
     nav a {
       color: white;
       text-decoration: none;
+      font-size: 15px;
       transition: 0.3s;
-      font-weight: bold;
     }
 
     nav a:hover {
-      color: cyan;
+      color: #00c3ff;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1300px;
+      margin: auto;
+      padding-top: 120px;
     }
 
     .hero {
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 40px;
-      background:
-        radial-gradient(circle at top, rgba(0,255,255,0.2), transparent 40%),
-        #050505;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 30px;
     }
 
-    .hero-content {
-      max-width: 900px;
+    .sidebar {
+      background: rgba(13, 18, 40, 0.9);
+      border-radius: 25px;
+      padding: 30px;
+      border: 1px solid rgba(0, 195, 255, 0.2);
+      height: fit-content;
+      position: sticky;
+      top: 100px;
     }
 
     .profile-img {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 5px solid cyan;
-      box-shadow: 0 0 30px cyan;
-      margin-bottom: 30px;
-    }
-
-    h1 {
-      font-size: 70px;
-      margin-bottom: 10px;
-    }
-
-    .typing {
-      color: cyan;
-      font-size: 28px;
+      width: 100%;
+      border-radius: 20px;
+      border: 2px solid #00c3ff;
       margin-bottom: 25px;
     }
 
-    .btn {
-      display: inline-block;
-      padding: 14px 30px;
-      background: cyan;
-      color: black;
-      text-decoration: none;
-      border-radius: 40px;
-      font-weight: bold;
-      margin: 10px;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 20px cyan;
-    }
-
-    section {
-      max-width: 1200px;
-      margin: auto;
-      padding: 100px 30px;
-    }
-
-    .section-title {
-      text-align: center;
+    .name {
       font-size: 45px;
-      margin-bottom: 50px;
-      color: cyan;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .highlight {
+      color: #7a5cff;
+    }
+
+    .role {
+      color: #c7c7c7;
+      margin-top: 15px;
+      margin-bottom: 30px;
+    }
+
+    .info-box {
+      margin-top: 20px;
+    }
+
+    .info-box p {
+      margin: 12px 0;
+      color: #d6d6d6;
+      font-size: 14px;
+    }
+
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
     }
 
     .card {
-      background: #111;
+      background: rgba(13, 18, 40, 0.9);
       border-radius: 25px;
-      padding: 40px;
-      margin-top: 20px;
+      padding: 35px;
+      border: 1px solid rgba(0, 195, 255, 0.15);
       transition: 0.3s;
-      border: 1px solid #222;
     }
 
     .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 0 20px rgba(0,255,255,0.3);
+      transform: translateY(-5px);
+      box-shadow: 0 0 30px rgba(0,195,255,0.15);
+    }
+
+    .section-title {
+      color: #00c3ff;
+      font-size: 20px;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .intro h1 {
+      font-size: 55px;
+      margin-bottom: 15px;
+    }
+
+    .intro h1 span {
+      color: #7a5cff;
+    }
+
+    .intro p {
+      color: #d0d0d0;
+      line-height: 1.8;
+    }
+
+    .grid-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .mini-card {
+      background: rgba(255,255,255,0.03);
+      padding: 20px;
+      border-radius: 15px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .mini-card h3 {
+      color: #00c3ff;
+      font-size: 15px;
+      margin-bottom: 8px;
     }
 
     .skills {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
     }
 
     .skill {
-      background: cyan;
-      color: black;
-      padding: 12px 25px;
+      background: linear-gradient(90deg, #00c3ff, #7a5cff);
+      padding: 12px 22px;
       border-radius: 30px;
-      font-weight: bold;
+      font-size: 14px;
+      font-weight: 600;
     }
 
     .projects {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+      gap: 20px;
     }
 
     .project-card {
-      background: #111;
-      padding: 30px;
-      border-radius: 25px;
+      background: rgba(255,255,255,0.03);
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.05);
       transition: 0.3s;
-      border: 1px solid #222;
     }
 
     .project-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 0 20px rgba(0,255,255,0.4);
+      transform: translateY(-8px);
     }
 
-    .project-card h3 {
-      margin-bottom: 15px;
-      color: cyan;
+    .project-card img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+    }
+
+    .project-content {
+      padding: 20px;
+    }
+
+    .project-content h3 {
+      color: #00c3ff;
+      margin-bottom: 12px;
+    }
+
+    .project-content p {
+      color: #d4d4d4;
+      font-size: 14px;
+      line-height: 1.7;
     }
 
     footer {
       text-align: center;
       padding: 40px;
-      color: #777;
+      color: #999;
+      margin-top: 50px;
     }
 
-    @media(max-width:768px) {
-      h1 {
-        font-size: 45px;
+    @media(max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
       }
 
-      .typing {
-        font-size: 20px;
+      .sidebar {
+        position: relative;
+        top: 0;
       }
 
-      nav ul {
-        gap: 20px;
+      .intro h1 {
+        font-size: 40px;
       }
     }
   </style>
@@ -197,200 +265,241 @@
   <nav>
     <ul>
       <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#leadership">Leadership</a></li>
       <li><a href="#research">Research</a></li>
-      <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
-  <div class="hero">
+  <div class="container">
 
-    <div class="hero-content">
+    <div class="hero">
 
-      <!-- GANTI FOTO -->
-      <img src="yourphoto.jpg" class="profile-img">
+      <!-- SIDEBAR -->
+      <div class="sidebar">
 
-      <h1>Mathew Luv Christe</h1>
+        <!-- GANTI FOTO -->
+        <img src="yourphoto.jpg" class="profile-img">
 
-      <div class="typing">
-        Artificial Intelligence Student
+        <div class="name">
+          MATHEW <br>
+          <span class="highlight">LUV</span> <br>
+          CHRISTE
+        </div>
+
+        <div class="role">
+          AI Enthusiast & Innovator
+        </div>
+
+        <div class="info-box">
+          <p><strong>Birthday:</strong> 26 May 2006</p>
+          <p><strong>Nationality:</strong> Indonesian</p>
+          <p><strong>University:</strong> Nanjing University of Information Science and Technology</p>
+          <p><strong>Major:</strong> Artificial Intelligence</p>
+          <p><strong>Scholarship:</strong> Excellent Scholarship 100%</p>
+        </div>
+
       </div>
 
-      <p>
-        Nanjing University of Information Science and Technology
-      </p>
+      <!-- MAIN -->
+      <div class="main-content">
 
-      <br>
+        <!-- ABOUT -->
+        <div class="card intro" id="about">
 
-      <a href="https://github.com" class="btn">
-        GitHub
-      </a>
+          <div class="section-title">ABOUT ME</div>
 
-      <a href="#contact" class="btn">
-        Contact Me
-      </a>
+          <h1>Hi, I'm <span>Mathew</span></h1>
+
+          <p>
+            I am an Artificial Intelligence student at Nanjing University of
+            Information Science and Technology from Indonesia. I am passionate
+            about AI, machine learning, computer vision, and interactive systems.
+          </p>
+
+          <br>
+
+          <p>
+            I enjoy creating innovative projects such as hand gesture recognition,
+            body detection systems, AI games, and intelligent web applications.
+          </p>
+
+          <div class="grid-info">
+
+            <div class="mini-card">
+              <h3>Languages</h3>
+              <p>Indonesian — Native</p>
+              <p>English — Intermediate</p>
+              <p>Chinese — Intermediate</p>
+            </div>
+
+            <div class="mini-card">
+              <h3>Soft Skills</h3>
+              <p>Leadership</p>
+              <p>Public Speaking</p>
+              <p>Team Management</p>
+            </div>
+
+            <div class="mini-card">
+              <h3>Current Focus</h3>
+              <p>Artificial Intelligence</p>
+              <p>Computer Vision</p>
+              <p>Machine Learning</p>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- PROJECTS -->
+        <div class="card" id="projects">
+
+          <div class="section-title">PROJECTS</div>
+
+          <div class="projects">
+
+            <div class="project-card">
+              <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200">
+
+              <div class="project-content">
+                <h3>Hand Gesture Recognition</h3>
+
+                <p>
+                  Real-time hand gesture recognition system using MediaPipe,
+                  OpenCV, and Python for interactive AI applications.
+                </p>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1200">
+
+              <div class="project-content">
+                <h3>AI Boxing Game</h3>
+
+                <p>
+                  AI-powered boxing game using body tracking and motion
+                  detection technology with computer vision integration.
+                </p>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1200">
+
+              <div class="project-content">
+                <h3>Body Detection System</h3>
+
+                <p>
+                  Human body detection and tracking system developed for
+                  interactive gaming and smart monitoring.
+                </p>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200">
+
+              <div class="project-content">
+                <h3>Machine Learning Applications</h3>
+
+                <p>
+                  Development of AI solutions using machine learning and
+                  deep learning models for image recognition.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- SKILLS -->
+        <div class="card" id="skills">
+
+          <div class="section-title">SKILLS</div>
+
+          <div class="skills">
+
+            <div class="skill">Python</div>
+            <div class="skill">Machine Learning</div>
+            <div class="skill">Computer Vision</div>
+            <div class="skill">Deep Learning</div>
+            <div class="skill">Public Speaking</div>
+            <div class="skill">Leadership</div>
+            <div class="skill">HTML & CSS</div>
+            <div class="skill">Arduino</div>
+            <div class="skill">OpenCV</div>
+            <div class="skill">MediaPipe</div>
+
+          </div>
+
+        </div>
+
+        <!-- LEADERSHIP -->
+        <div class="card" id="leadership">
+
+          <div class="section-title">LEADERSHIP EXPERIENCE</div>
+
+          <div class="mini-card">
+            <h3>Head of Youth and Sport Department — PPIT Nanjing</h3>
+
+            <br>
+
+            <p>
+              Leading youth and sports department activities, coordinating
+              student programs, and managing organizational events for
+              Indonesian students in Nanjing.
+            </p>
+          </div>
+
+          <br>
+
+          <div class="mini-card">
+            <h3>Vice Chairman — Nanjing Nusantara Champs</h3>
+
+            <br>
+
+            <p>
+              Vice chief organizer of Nanjing Nusantara Champs,
+              one of the biggest events organized by PPIT Nanjing,
+              responsible for coordination, event management,
+              and team leadership.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- RESEARCH -->
+        <div class="card" id="research">
+
+          <div class="section-title">RESEARCH TOPIC</div>
+
+          <div class="mini-card">
+
+            <h3>DE Water Website</h3>
+
+            <br>
+
+            <p>
+              Research and development of an intelligent web-based
+              water management system focused on environmental
+              monitoring and smart data analysis.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
 
     </div>
 
   </div>
 
-  <section id="about">
-
-    <h2 class="section-title">About Me</h2>
-
-    <div class="card">
-
-      <p>
-        I am Mathew Luv Christe, an Artificial Intelligence student at
-        Nanjing University of Information Science and Technology.
-        I was born on May 26, 2006 and come from Indonesia.
-      </p>
-
-      <br>
-
-      <p>
-        I am passionate about artificial intelligence,
-        computer vision, machine learning, embedded systems,
-        and interactive technology development.
-      </p>
-
-      <br>
-
-      <p>
-        I am also a recipient of the Excellent Scholarship
-        with 100% full scholarship coverage.
-      </p>
-
-    </div>
-
-  </section>
-
-  <section id="skills">
-
-    <h2 class="section-title">Languages & Skills</h2>
-
-    <div class="card">
-
-      <h3>Languages</h3>
-
-      <br>
-
-      <div class="skills">
-        <div class="skill">Indonesian — Native</div>
-        <div class="skill">English — Intermediate</div>
-        <div class="skill">Chinese — Intermediate</div>
-      </div>
-
-      <br><br>
-
-      <h3>Technical Skills</h3>
-
-      <br>
-
-      <div class="skills">
-        <div class="skill">Python</div>
-        <div class="skill">Machine Learning</div>
-        <div class="skill">Computer Vision</div>
-        <div class="skill">Arduino</div>
-        <div class="skill">C++</div>
-        <div class="skill">AI Development</div>
-        <div class="skill">Hand Gesture Recognition</div>
-        <div class="skill">Game Development</div>
-        <div class="skill">HTML & CSS</div>
-      </div>
-
-    </div>
-
-  </section>
-
-  <section id="projects">
-
-    <h2 class="section-title">Projects</h2>
-
-    <div class="projects">
-
-      <div class="project-card">
-        <h3>Hand Gesture Recognition</h3>
-
-        <p>
-          AI-based computer vision system capable of detecting
-          and classifying hand gestures in real-time using webcam input.
-        </p>
-      </div>
-
-      <div class="project-card">
-        <h3>AI Boxing Detection Game</h3>
-
-        <p>
-          Interactive boxing game using body tracking and
-          motion detection technology powered by AI.
-        </p>
-      </div>
-
-      <div class="project-card">
-        <h3>Body Detection System</h3>
-
-        <p>
-          Human body detection system designed for interactive
-          gaming and motion analysis applications.
-        </p>
-      </div>
-
-      <div class="project-card">
-        <h3>Machine Learning Applications</h3>
-
-        <p>
-          Development of AI and machine learning solutions
-          for image recognition and smart systems.
-        </p>
-      </div>
-
-    </div>
-
-  </section>
-
-  <section id="research">
-
-    <h2 class="section-title">Research Topic</h2>
-
-    <div class="card">
-
-      <h3>DE Water Research Website</h3>
-
-      <br>
-
-      <p>
-        Research and development website focused on water-related
-        environmental technology and intelligent monitoring systems.
-      </p>
-
-    </div>
-
-  </section>
-
-  <section id="contact">
-
-    <h2 class="section-title">Contact</h2>
-
-    <div class="card">
-
-      <p>Email : yourmail@gmail.com</p>
-
-      <br>
-
-      <p>GitHub : github.com/yourusername</p>
-
-      <br>
-
-      <p>LinkedIn : linkedin.com/in/yourname</p>
-
-    </div>
-
-  </section>
-
   <footer>
-    © 2026 Mathew Luv Christe | AI Portfolio
+    © 2026 Mathew Luv Christe — AI Portfolio
   </footer>
 
 </body>
